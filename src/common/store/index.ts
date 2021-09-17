@@ -14,3 +14,5 @@ export const store = createStore(
   reducers,
   composeEnhancers(applyMiddleware(thunk, logger))
 );
+
+export type RootState = ReturnType<typeof store.getState>;
