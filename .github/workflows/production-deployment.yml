@@ -1,0 +1,21 @@
+name: Deploy to Production
+on:
+  repository_dispatch:
+    types: [deploy-to-prod]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - uses: amondnet/vercel-action@v20.0.0
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
+          github-token: ${{ secrets.GH_TOKEN }} #Optional
+          vercel-args: "--prod" #Optional
+          vercel-org-id: ${{ secrets.ORG_ID}} #Required
+          vercel-project-id: ${{ secrets.PROJECT_ID}} #Required
+          working-directory: ./
