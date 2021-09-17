@@ -32,5 +32,5 @@ modules
 
 | Environments | Branch  | URL                                                                        |
 | ------------ | ------- | -------------------------------------------------------------------------- |
-| Staging      | develop | (https://staging.ms-todo.changani.me)[https://staging.ms-todo.changani.me] |
-| Production   | main    | (https://ms-todo.changani.me)[https://ms-todo.changani.me]                 |
+| Staging      | develop | https://staging.ms-todo.changani.me |
+| Production   | main    | https://ms-todo.changani.me                 |
