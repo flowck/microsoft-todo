@@ -29,3 +29,8 @@ modules
   - `./modules/module/store/services.ts`
 
 ## Environments
+
+| Environments | Branch  | URL                                                                        |
+| ------------ | ------- | -------------------------------------------------------------------------- |
+| Staging      | develop | (https://staging.ms-todo.changani.me)[https://staging.ms-todo.changani.me] |
+| Production   | main    | (https://ms-todo.changani.me)[https://ms-todo.changani.me]                 |
