@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "SegoeUI-Light";
+  src: url("./fonts/segoeuisl.ttf");
+}
+
+@font-face {
+  font-family: "SegoeUI-Bold";
+  src: url("./fonts/segoeuib.ttf");
+}
+
+:root {
+  --font-bold: "SegoeUI-Bold", arial;
+  --font-light: "SegoeUI-Light", arial;
+}
+
+body {
+  font-family: var(--font-light);
+}
