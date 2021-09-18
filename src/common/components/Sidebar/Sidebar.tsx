@@ -2,16 +2,19 @@ import {
   Nav,
   ListsNav,
   Container,
+  UserAvatar,
+  AddButtons,
+  UserControl,
+  UserDetails,
   SeparatorLine,
   SearchControl,
   ListsGroupsNav,
-  UserAvatar,
-  UserControl,
-  UserDetails,
 } from "./SidebarStyles";
 import Search from "@/common/icons/search.svg";
 import { groups, lists, menuItems } from "./mock";
 import { renderGroups, renderMenuItems, renderLists } from "./renders";
+import NewListIcon from "@/common/icons/add.svg";
+import NewGroupIcon from "@/common/icons/add-group.svg";
 
 export function Sidebar() {
   return (
@@ -42,6 +45,16 @@ export function Sidebar() {
       <ListsNav>
         <ul>{renderLists(lists)}</ul>
       </ListsNav>
+
+      <AddButtons>
+        <button>
+          <img src={NewListIcon} alt="New list" />
+          <span>New list</span>
+        </button>
+        <button>
+          <img src={NewGroupIcon} alt="New group" />
+        </button>
+      </AddButtons>
     </Container>
   );
 }

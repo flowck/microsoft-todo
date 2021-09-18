@@ -192,3 +192,28 @@ export const ListsNav = styled(GroupLists)`
     padding: 0 14px 0 22px;
   }
 `;
+
+export const AddButtons = styled.div`
+  width: 100%;
+  bottom: 14px;
+  display: flex;
+  padding: 0 14px;
+  position: absolute;
+  justify-content: space-between;
+
+  button {
+    border: none;
+    display: flex;
+    color: #fff;
+    cursor: pointer;
+    background-color: transparent;
+
+    span {
+      margin-left: 14px;
+    }
+
+    img {
+      width: 14px;
+    }
+  }
+`;
