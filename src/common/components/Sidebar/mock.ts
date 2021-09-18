@@ -5,7 +5,7 @@ import Favorite from "@/common/icons/favorite.svg";
 import Calendar from "@/common/icons/calendar.svg";
 
 export const menuItems = [
-  { label: "Search", icon: Sun, path: "/my-day" },
+  { label: "My Day", icon: Sun, path: "/my-day" },
   { label: "Important", icon: Favorite, path: "/important" },
   { label: "Planned", icon: Calendar, path: "/planned" },
   { label: "Assigned to me", icon: User, path: "/assigned-to-me" },
