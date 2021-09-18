@@ -4,8 +4,8 @@ import Favorited from "@/common/icons/favorited.svg";
 import ToFavorite from "@/common/icons/toFavorite.svg";
 import {
   Container,
-  FavoriteButton,
   StatusButton,
+  FavoriteButton,
 } from "@/common/components/Task/TaskStyles";
 
 export function Task() {
