@@ -1,5 +1,6 @@
 import thunk from "redux-thunk";
 import logger from "redux-logger";
+import { tasksReducer } from "@/modules/Tasks/store/reducer";
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 
 const composeEnhancers =
@@ -8,7 +9,7 @@ const composeEnhancers =
 /**
  * Assemble all reducers
  */
-const reducers = combineReducers({});
+const reducers = combineReducers({ tasksModule: tasksReducer });
 
 export const store = createStore(
   reducers,
