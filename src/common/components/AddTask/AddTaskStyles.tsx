@@ -2,9 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  bottom: 14px;
   display: flex;
-  position: fixed;
+  position: relative;
   align-items: center;
 
   img {
