@@ -1,7 +1,10 @@
+import { RootState } from "@/store";
 import styled from "styled-components";
-import { Task } from "@/common/components/Task/Task";
+import { useSelector } from "react-redux";
+import { Task } from "@/modules/Tasks/store/task";
 import { View } from "@/common/containers/View/View";
-import { AddTask } from "@/common/components/AddTask/AddTask";
+import { AddTask } from "@/modules/Tasks/components/AddTask/AddTask";
+import { TaskItem } from "@/modules/Tasks/components/TaskItem/TaskItem";
 // import { Tooltip } from "@/common/components/Tooltip/Tooltip";
 // import { ViewOptionsButton } from "../components/ViewOptions/ViewOptionsButton";
 import { ContainerTitle } from "@/common/components/ContainerTitle/ContainerTitle";
@@ -17,7 +20,13 @@ const TaskList = styled.div`
   flex-grow: 1;
 `;
 
+function renderTasks(tasks: Task[]) {
+  return tasks.length ? tasks.map((task, index) => <TaskItem task={task} key={index} />) : null;
+}
+
 export function Tasks() {
+  const tasks = useSelector<RootState, Task[]>(({ tasksModule }) => tasksModule.tasks);
+
   return (
     <Container>
       <ContainerHeader>
@@ -32,13 +41,9 @@ export function Tasks() {
         </ViewOptionsButton> */}
       </ContainerHeader>
 
-      <TaskList>
-        <Task></Task>
-        <Task></Task>
-        <Task></Task>
-      </TaskList>
+      <TaskList>{renderTasks(tasks)}</TaskList>
 
-      <AddTask></AddTask>
+      <AddTask />
     </Container>
   );
 }
