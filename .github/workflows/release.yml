@@ -14,8 +14,8 @@ jobs:
           ref: main
       - env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        name: Deploy
-        uses: ridedott/release-me-action@master
+        name: Semantic Release
+        run: npx semantic-release
 
       - name: Trigger deployment to production
         uses: mvasigh/dispatch-action@main
