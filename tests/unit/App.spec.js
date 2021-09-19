@@ -1,4 +1,4 @@
-import App from "@/common/containers/App";
+import App from "@/common/containers/App/App";
 import { render } from "@testing-library/react";
 
 describe("App.tsx", () => {
