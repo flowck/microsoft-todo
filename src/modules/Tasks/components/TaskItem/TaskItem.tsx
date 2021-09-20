@@ -14,7 +14,7 @@ export function TaskItem({ task }: Props) {
   const [isFavorited, setIsFavorited] = useState(false);
 
   return (
-    <Container>
+    <Container isComplete={isComplete}>
       <StatusButton onClick={() => setIsComplete(!isComplete)} className={isComplete ? "status-button--complete" : ""}>
         {isComplete ? <img src={Check} alt="Status" /> : null}
       </StatusButton>
