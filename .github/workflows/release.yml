@@ -19,7 +19,9 @@ jobs:
       - name: Semantic Release
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: npx semantic-release
+        run: |
+          git checkout main
+          npx semantic-release
 
       - name: Trigger deployment to production
         uses: mvasigh/dispatch-action@main
