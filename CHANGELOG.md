@@ -1,3 +1,14 @@
+## [1.0.1](https://github.com/flowck/microsoft-todo/compare/v1.0.0...v1.0.1) (2021-09-20)
+
+
+### Bug Fixes
+
+* **54:** add github token ([bfe8c2c](https://github.com/flowck/microsoft-todo/commit/bfe8c2c2593802649464944189fc9ca22faaff14))
+* **54:** debug ([fd1e108](https://github.com/flowck/microsoft-todo/commit/fd1e1085a89ccfce6d4995ce13b239066eb16642))
+* **54:** disable ci verification and dry run ([4a7907c](https://github.com/flowck/microsoft-todo/commit/4a7907cb6d8b60a0746bf891d4f1f0301974da8f))
+* **54:** release from ci pipeline ([c7dedd8](https://github.com/flowck/microsoft-todo/commit/c7dedd8adc9923dc5caabfa50ae7967dd2df93fa))
+* **54:** upgrade semantic-release ([43f8311](https://github.com/flowck/microsoft-todo/commit/43f8311f4eca2cde21a8041170635a0e22b8d5b0))
+
 # 1.0.0 (2021-09-20)
 
 
