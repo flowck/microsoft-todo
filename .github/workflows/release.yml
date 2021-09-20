@@ -22,7 +22,7 @@ jobs:
         run: |
           git checkout main
           ls
-          npx semantic-release --ci --dry-run=false --debug
+          npx semantic-release@18.0.0 --ci --dry-run=false --debug
 
       - name: Trigger deployment to production
         uses: mvasigh/dispatch-action@main
