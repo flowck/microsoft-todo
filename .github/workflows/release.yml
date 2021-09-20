@@ -21,7 +21,8 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           git checkout main
-          npx semantic-release --no-ci --dry-run=false
+          ls
+          npx semantic-release --ci --dry-run=false --debug
 
       - name: Trigger deployment to production
         uses: mvasigh/dispatch-action@main
