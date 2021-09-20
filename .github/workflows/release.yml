@@ -12,13 +12,13 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: main
-      - env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Setup
         run: npm i @semantic-release/changelog @semantic-release/git @semantic-release/github
 
       - name: Semantic Release
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: npx semantic-release
 
       - name: Trigger deployment to production
