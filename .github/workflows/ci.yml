@@ -7,16 +7,16 @@ jobs:
     name: CI
     runs-on: ubuntu-latest
     steps:
-      # - name: Checkout
-      #   uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      # - name: Setup Node
-      #   uses: actions/setup-node@v2
-      #   with:
-      #     node-version: 14
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
 
-      # - name: Install dependencies
-      #   run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
       # - name: Build
       #   run: npm run build
@@ -26,14 +26,15 @@ jobs:
 
       - name: Trigger Release
         if: github.ref == 'refs/heads/main'
+        # uses: mvasigh/dispatch-action@main
+        # with:
+        #   token: ${{ secrets.GH_TOKEN }}
+        #   event_type: semantic-release
+        run: npx semantic-release --debug
+
+      - name: Trigger Deployment to Staging
+        if: github.ref == 'refs/heads/develop'
         uses: mvasigh/dispatch-action@main
         with:
           token: ${{ secrets.GH_TOKEN }}
-          event_type: semantic-release
-
-      # - name: Trigger Deployment to Staging
-      #   if: github.ref == 'refs/heads/develop'
-      #   uses: mvasigh/dispatch-action@main
-      #   with:
-      #     token: ${{ secrets.GH_TOKEN }}
-      #     event_type: deploy-to-staging
+          event_type: deploy-to-staging
