@@ -18,21 +18,24 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # - name: Build
-      #   run: npm run build
+      - name: Build
+        run: npm run build
 
-      # - name: Test
-      #   run: npm run test
+      - name: Test
+        run: npm run test
 
-      - name: Trigger Release
+      - name: Release
         if: github.ref == 'refs/heads/main'
-        # uses: mvasigh/dispatch-action@main
-        # with:
-        #   token: ${{ secrets.GH_TOKEN }}
-        #   event_type: semantic-release
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: npx semantic-release --debug
+
+      - name: Trigger deployment to production
+        if: github.ref == 'refs/heads/main'
+        uses: mvasigh/dispatch-action@main
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          event_type: deploy-to-prod
 
       - name: Trigger Deployment to Staging
         if: github.ref == 'refs/heads/develop'
