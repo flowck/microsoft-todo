@@ -30,6 +30,8 @@ jobs:
         # with:
         #   token: ${{ secrets.GH_TOKEN }}
         #   event_type: semantic-release
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: npx semantic-release --debug
 
       - name: Trigger Deployment to Staging
