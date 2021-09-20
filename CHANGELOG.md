@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/flowck/microsoft-todo/compare/v1.0.1...v1.0.2) (2021-09-20)
+
+
+### Bug Fixes
+
+* **54:** move release job to main pipeline ([7fe78b8](https://github.com/flowck/microsoft-todo/commit/7fe78b826aff1f47f2715d45b1b8352dd1de05e1))
+
 ## [1.0.1](https://github.com/flowck/microsoft-todo/compare/v1.0.0...v1.0.1) (2021-09-20)
 
 
