@@ -108,7 +108,7 @@
     "@types/react-router-dom": "^5.1.9",
     "@types/redux-logger": "^3.0.9",
     "husky": "^7.0.2",
-    "semantic-release": "^17.4.7",
+    "semantic-release": "^18.0.0",
     "typescript": "^4.4.3"
   }
 }
