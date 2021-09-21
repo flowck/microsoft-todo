@@ -1,5 +1,7 @@
 # Microsoft Todo
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=flowck_microsoft-todo&metric=alert_status)](https://sonarcloud.io/dashboard?id=flowck_microsoft-todo)
+
 ## Setting up locally
 
 Please refer to the document: [Setup](./docs/setup.md)
@@ -30,7 +32,7 @@ modules
 
 ## Environments
 
-| Environments | Branch  | URL                                                                        |
-| ------------ | ------- | -------------------------------------------------------------------------- |
+| Environments | Branch  | URL                                 |
+| ------------ | ------- | ----------------------------------- |
 | Staging      | develop | https://staging.ms-todo.changani.me |
-| Production   | main    | https://ms-todo.changani.me                 |
+| Production   | main    | https://ms-todo.changani.me         |
