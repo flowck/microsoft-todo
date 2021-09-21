@@ -36,7 +36,7 @@ export function Tasks() {
         <ContainerTitle>Tasks</ContainerTitle>
       </ContainerHeader>
 
-      <TaskList>
+      <TaskList data-testid="listOfTasks">
         {tasks.length ? renderTasks(!IS_COMPLETE) : null}
 
         {hasCompletedTasks ? (

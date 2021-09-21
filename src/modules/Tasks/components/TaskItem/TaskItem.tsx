@@ -22,7 +22,11 @@ export function TaskItem({ task, onStatusChange }: Props) {
 
   return (
     <Container isComplete={isComplete}>
-      <StatusButton onClick={toggleStatus} className={isComplete ? "status-button--complete" : ""}>
+      <StatusButton
+        onClick={toggleStatus}
+        data-testid="taskStatusButton"
+        className={isComplete ? "status-button--complete" : ""}
+      >
         {isComplete ? <img src={Check} alt="Status" /> : null}
       </StatusButton>
 
