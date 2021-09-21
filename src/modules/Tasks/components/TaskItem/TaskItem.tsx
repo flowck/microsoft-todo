@@ -7,15 +7,22 @@ import { Container, StatusButton, FavoriteButton } from "@/modules/Tasks/compone
 
 interface Props {
   task: Task;
+  onStatusChange(task: Task): void;
 }
 
-export function TaskItem({ task }: Props) {
-  const [isComplete, setIsComplete] = useState(false);
+export function TaskItem({ task, onStatusChange }: Props) {
   const [isFavorited, setIsFavorited] = useState(false);
+  const [isComplete, setIsComplete] = useState(task.isComplete);
+
+  const toggleStatus = () => {
+    setIsComplete(!isComplete);
+    task.isComplete = !isComplete;
+    onStatusChange(task);
+  };
 
   return (
     <Container isComplete={isComplete}>
-      <StatusButton onClick={() => setIsComplete(!isComplete)} className={isComplete ? "status-button--complete" : ""}>
+      <StatusButton onClick={toggleStatus} className={isComplete ? "status-button--complete" : ""}>
         {isComplete ? <img src={Check} alt="Status" /> : null}
       </StatusButton>
 
