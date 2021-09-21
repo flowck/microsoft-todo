@@ -11,10 +11,10 @@ import {
   ListsGroupsNav,
 } from "./SidebarStyles";
 import Search from "@/common/icons/search.svg";
-import { groups, lists, menuItems } from "./mock";
-import { renderGroups, renderMenuItems, renderLists } from "./renders";
 import NewListIcon from "@/common/icons/add.svg";
+import { groups, lists, menuItems } from "./mock";
 import NewGroupIcon from "@/common/icons/add-group.svg";
+import { renderGroups, renderMenuItems, renderLists } from "./renders";
 
 export function Sidebar() {
   return (

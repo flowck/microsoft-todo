@@ -1,47 +1,51 @@
+import { useMemo } from "react";
 import { RootState } from "@/store";
-import styled from "styled-components";
-import { useSelector } from "react-redux";
 import { Task } from "@/modules/Tasks/store/task";
-import { View } from "@/common/containers/View/View";
+import { createAction } from "@/common/store/utils";
+import { useDispatch, useSelector } from "react-redux";
+import { UPDATE_TASK } from "@/modules/Tasks/store/actions";
 import { AddTask } from "@/modules/Tasks/components/AddTask/AddTask";
 import { TaskItem } from "@/modules/Tasks/components/TaskItem/TaskItem";
-// import { Tooltip } from "@/common/components/Tooltip/Tooltip";
-// import { ViewOptionsButton } from "../components/ViewOptions/ViewOptionsButton";
 import { ContainerTitle } from "@/common/components/ContainerTitle/ContainerTitle";
 import { ContainerHeader } from "@/common/components/ContainerHeader/ContainerHeader";
-
-const Container = styled(View)`
-  display: flex;
-  flex-direction: column;
-  background-color: #1e1e1e;
-`;
-
-const TaskList = styled.div`
-  flex-grow: 1;
-`;
-
-function renderTasks(tasks: Task[]) {
-  return tasks.length ? tasks.map((task, index) => <TaskItem task={task} key={index} />) : null;
-}
+import { Container, TaskList, CompletedTag } from "@/modules/Tasks/containers/TaskStyles";
 
 export function Tasks() {
+  const IS_COMPLETE = true;
+  const dispatch = useDispatch();
   const tasks = useSelector<RootState, Task[]>(({ tasksModule }) => tasksModule.tasks);
+  const hasCompletedTasks = useMemo(() => tasks.some((task) => task.isComplete), [tasks]);
+
+  const onTaskStatusChange = (task: Task) => {
+    dispatch(createAction<Task>(UPDATE_TASK, task));
+  };
+
+  const renderTasks = (isComplete: boolean) => {
+    return tasks.map((task, index) => {
+      if (task.isComplete !== isComplete) {
+        return null;
+      }
+
+      return <TaskItem onStatusChange={onTaskStatusChange} task={task} key={index} />;
+    });
+  };
 
   return (
     <Container>
       <ContainerHeader>
         <ContainerTitle>Tasks</ContainerTitle>
-        {/* <ViewOptionsButton>
-          <Tooltip>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut iusto
-            corporis id impedit dignissimos praesentium quasi libero mollitia
-            maxime aut, excepturi tempora a, non nam voluptatum voluptas.
-            Labore, laborum eos.
-          </Tooltip>
-        </ViewOptionsButton> */}
       </ContainerHeader>
 
-      <TaskList>{renderTasks(tasks)}</TaskList>
+      <TaskList data-testid="listOfTasks">
+        {tasks.length ? renderTasks(!IS_COMPLETE) : null}
+
+        {hasCompletedTasks ? (
+          <>
+            <CompletedTag>Completed</CompletedTag>
+            {renderTasks(IS_COMPLETE)}
+          </>
+        ) : null}
+      </TaskList>
 
       <AddTask />
     </Container>

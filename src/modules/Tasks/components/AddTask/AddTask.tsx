@@ -24,9 +24,13 @@ export function AddTask() {
   };
 
   return (
-    <Container onSubmit={onSubmit}>
+    <Container data-testid="addTaskForm" onSubmit={onSubmit}>
       <img src={AddTaskIcon} alt="Add a task" />
-      <input placeholder="Add a task" onInput={(event) => setContent((event.target as HTMLInputElement).value)} />
+      <input
+        placeholder="Add a task"
+        data-testid="addTaskInput"
+        onInput={(event) => setContent((event.target as HTMLInputElement).value)}
+      />
     </Container>
   );
 }

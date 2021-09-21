@@ -8,7 +8,7 @@ export function Content() {
     <ContentContainer className="app__content">
       <Switch>
         <Route exact path="/">
-          <Redirect to="/my-day"></Redirect>
+          <Redirect to="/tasks"></Redirect>
         </Route>
         <Route path="/my-day">
           <MyDay></MyDay>
