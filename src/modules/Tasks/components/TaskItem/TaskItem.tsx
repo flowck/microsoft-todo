@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import Check from "@/common/icons/check.svg";
 import { Task } from "@/modules/Tasks/store/task";
 import Favorited from "@/common/icons/favorited.svg";
@@ -7,12 +7,11 @@ import { Container, StatusButton, FavoriteButton } from "@/modules/Tasks/compone
 
 interface Props {
   task: Task;
-  onBlur(): void;
-  onClick(): void;
+  onClick(task: Task): void;
   onTaskUpdate(task: Task): void;
 }
 
-export function TaskItem({ task, onTaskUpdate, onClick, onBlur }: Props) {
+export function TaskItem({ task, onTaskUpdate, onClick }: Props) {
   const [isFavorited, setIsFavorited] = useState(false);
   const [isComplete, setIsComplete] = useState(task.isComplete);
 
@@ -28,8 +27,17 @@ export function TaskItem({ task, onTaskUpdate, onClick, onBlur }: Props) {
     onTaskUpdate(task);
   };
 
+  const onTaskClicked = (event: MouseEvent) => {
+    const targetTagName = (event.target as HTMLElement).tagName;
+    if (targetTagName.match(/img|button/i)) {
+      return undefined;
+    }
+
+    onClick(task);
+  };
+
   return (
-    <Container isComplete={isComplete} onClick={onClick} onBlur={onBlur} tabIndex={-1}>
+    <Container isComplete={isComplete} onClick={onTaskClicked} tabIndex={-1}>
       <StatusButton
         onClick={toggleStatus}
         data-testid="taskStatusButton"
