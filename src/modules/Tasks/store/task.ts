@@ -28,7 +28,7 @@ export class Task {
   }
 
   set isFavorite(value: boolean) {
-    this._isComplete = value;
+    this._isFavorite = value;
     this.updateUpdatedAt();
   }
 
