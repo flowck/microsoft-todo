@@ -7,17 +7,23 @@ import { Container, StatusButton, FavoriteButton } from "@/modules/Tasks/compone
 
 interface Props {
   task: Task;
-  onStatusChange(task: Task): void;
+  onTaskUpdate(task: Task): void;
 }
 
-export function TaskItem({ task, onStatusChange }: Props) {
+export function TaskItem({ task, onTaskUpdate }: Props) {
   const [isFavorited, setIsFavorited] = useState(false);
   const [isComplete, setIsComplete] = useState(task.isComplete);
 
   const toggleStatus = () => {
     setIsComplete(!isComplete);
     task.isComplete = !isComplete;
-    onStatusChange(task);
+    onTaskUpdate(task);
+  };
+
+  const toggleFavorite = () => {
+    setIsFavorited(!isFavorited);
+    task.isFavorite = !isFavorited;
+    onTaskUpdate(task);
   };
 
   return (
@@ -32,7 +38,7 @@ export function TaskItem({ task, onStatusChange }: Props) {
 
       <span>{task.content}</span>
 
-      <FavoriteButton onClick={() => setIsFavorited(!isFavorited)}>
+      <FavoriteButton onClick={toggleFavorite}>
         <img src={isFavorited ? Favorited : ToFavorite} alt="favorite" />
       </FavoriteButton>
     </Container>
