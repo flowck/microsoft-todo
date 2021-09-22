@@ -16,7 +16,7 @@ export function Tasks() {
   const tasks = useSelector<RootState, Task[]>(({ tasksModule }) => tasksModule.tasks);
   const hasCompletedTasks = useMemo(() => tasks.some((task) => task.isComplete), [tasks]);
 
-  const onTaskStatusChange = (task: Task) => {
+  const onTaskUpdate = (task: Task) => {
     dispatch(createAction<Task>(UPDATE_TASK, task));
   };
 
@@ -26,7 +26,7 @@ export function Tasks() {
         return null;
       }
 
-      return <TaskItem onStatusChange={onTaskStatusChange} task={task} key={index} />;
+      return <TaskItem onTaskUpdate={onTaskUpdate} task={task} key={index} />;
     });
   };
 
