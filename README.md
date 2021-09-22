@@ -1,6 +1,9 @@
 # Microsoft Todo
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=flowck_microsoft-todo&metric=alert_status)](https://sonarcloud.io/dashboard?id=flowck_microsoft-todo)
+[![CI](https://github.com/flowck/microsoft-todo/actions/workflows/ci.yml/badge.svg)](https://github.com/flowck/microsoft-todo/actions/workflows/ci.yml)
+[![Deploy to Staging](https://github.com/flowck/microsoft-todo/actions/workflows/staging-deployment.yml/badge.svg)](https://github.com/flowck/microsoft-todo/actions/workflows/staging-deployment.yml)
+[![Deploy to Production](https://github.com/flowck/microsoft-todo/actions/workflows/production-deployment.yml/badge.svg)](https://github.com/flowck/microsoft-todo/actions/workflows/production-deployment.yml)
 
 ## Setting up locally
 
