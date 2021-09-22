@@ -5,7 +5,7 @@ export const Container = styled.aside`
   left: 0;
   width: 195px;
   height: 100%;
-  padding: 14px 0;
+  padding: 28px 0;
   position: fixed;
   font-size: 14px;
   background-color: #2e2c31;
@@ -195,7 +195,7 @@ export const ListsNav = styled(GroupLists)`
 
 export const AddButtons = styled.div`
   width: 100%;
-  bottom: 14px;
+  bottom: 28px;
   display: flex;
   padding: 0 14px;
   position: absolute;

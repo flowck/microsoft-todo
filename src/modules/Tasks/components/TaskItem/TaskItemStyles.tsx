@@ -11,7 +11,7 @@ const Button = styled.button`
   background-color: transparent;
 `;
 
-export const Container = styled.article`
+export const Container = styled.article.attrs((props: { isComplete?: boolean }) => props)`
   color: #fff;
   display: flex;
   padding: 14px;
@@ -23,6 +23,8 @@ export const Container = styled.article`
 
   span {
     flex-grow: 1;
+    color: ${(props) => (props.isComplete ? "#9b9b9b" : "#fff")};
+    text-decoration: ${(props) => (props.isComplete ? "line-through" : "none")};
   }
 `;
 
