@@ -3,9 +3,9 @@ import { RootState } from "@/store";
 import { Task } from "@/modules/Tasks/store/task";
 import { createAction } from "@/common/store/utils";
 import { useDispatch, useSelector } from "react-redux";
-import { UPDATE_TASK } from "@/modules/Tasks/store/actions";
 import { AddTask } from "@/modules/Tasks/components/AddTask/AddTask";
 import { TaskItem } from "@/modules/Tasks/components/TaskItem/TaskItem";
+import { SET_ACTIVE_TASK, UPDATE_TASK } from "@/modules/Tasks/store/actions";
 import { DetailsBar } from "@/modules/Tasks/components/DetailsBar/DetailsBar";
 import { ContainerTitle } from "@/common/components/ContainerTitle/ContainerTitle";
 import { ContainerHeader } from "@/common/components/ContainerHeader/ContainerHeader";
@@ -22,8 +22,9 @@ export function Tasks() {
     dispatch(createAction<Task>(UPDATE_TASK, task));
   };
 
-  const onClickTask = () => {
-    setIsDetailsActive(!isDetailsActive);
+  const onClickTask = (task: Task) => {
+    setIsDetailsActive(true);
+    dispatch(createAction<Task>(SET_ACTIVE_TASK, task));
   };
 
   const renderTasks = (isComplete: boolean) => {
@@ -32,9 +33,7 @@ export function Tasks() {
         return null;
       }
 
-      return (
-        <TaskItem onClick={onClickTask} onBlur={onClickTask} onTaskUpdate={onTaskUpdate} task={task} key={index} />
-      );
+      return <TaskItem onClick={onClickTask} onTaskUpdate={onTaskUpdate} task={task} key={index} />;
     });
   };
 
@@ -59,7 +58,7 @@ export function Tasks() {
         <AddTask />
       </Container>
       <DetailsSidebar className={isDetailsActive ? "tasks-details--active" : ""}>
-        <DetailsBar />
+        <DetailsBar onClose={() => setIsDetailsActive(false)} />
       </DetailsSidebar>
     </>
   );
