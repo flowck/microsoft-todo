@@ -15,10 +15,11 @@ export const Container = styled.article.attrs((props: { isComplete?: boolean }) 
   color: #fff;
   display: flex;
   padding: 14px;
+  cursor: pointer;
   font-size: 14px;
   border-radius: 5px;
-  align-items: center;
   margin-bottom: 1px;
+  align-items: center;
   background-color: #323232;
 
   span {
