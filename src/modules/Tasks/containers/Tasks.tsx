@@ -33,7 +33,7 @@ export function Tasks() {
         return null;
       }
 
-      return <TaskItem onClick={onClickTask} onTaskUpdate={onTaskUpdate} task={task} key={index} />;
+      return <TaskItem isDetails={false} onClick={onClickTask} onTaskUpdate={onTaskUpdate} task={task} key={index} />;
     });
   };
 

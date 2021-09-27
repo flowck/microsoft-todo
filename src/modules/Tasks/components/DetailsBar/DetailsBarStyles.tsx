@@ -11,6 +11,25 @@ export const Container = styled.aside`
 
 export const DetailsContent = styled.div`
   flex-grow: 1;
+
+  ul {
+    list-style: none;
+
+    li {
+      display: flex;
+      font-size: 14px;
+      padding: 14px 0;
+      color: #959595;
+      align-items: center;
+      border-bottom: 1px solid #3d3d40;
+
+      img {
+        width: 14px;
+        height: 14px;
+        margin-right: 10px;
+      }
+    }
+  }
 `;
 
 export const DetailsFooter = styled.footer`
@@ -19,7 +38,7 @@ export const DetailsFooter = styled.footer`
   justify-content: space-between;
 
   span {
-    font-size: 12px;
+    font-size: 11px;
     color: #929292;
   }
 
@@ -31,6 +50,24 @@ export const DetailsFooter = styled.footer`
     img {
       width: 14px;
       height: 14px;
+    }
+  }
+`;
+
+export const AddNoteForm = styled.form`
+  textarea {
+    width: 100%;
+    height: 90px;
+    border: none;
+    resize: none;
+    font-size: 14px;
+    color: #959595;
+    font-family: var(--font-body);
+    background-color: transparent;
+
+    &:focus,
+    &:active {
+      outline: none;
     }
   }
 `;

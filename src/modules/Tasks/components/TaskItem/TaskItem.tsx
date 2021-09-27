@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 import Check from "@/common/icons/check.svg";
 import { Task } from "@/modules/Tasks/store/task";
 import Favorited from "@/common/icons/favorited.svg";
@@ -7,13 +7,17 @@ import { Container, StatusButton, FavoriteButton } from "@/modules/Tasks/compone
 
 interface Props {
   task: Task;
-  onClick(task: Task): void;
+  isDetails: boolean;
+  onClick?(task: Task): void;
   onTaskUpdate(task: Task): void;
 }
 
-export function TaskItem({ task, onTaskUpdate, onClick }: Props) {
-  const [isFavorited, setIsFavorited] = useState(false);
+export function TaskItem({ task, onTaskUpdate, onClick, isDetails }: Props) {
+  const [isFavorite, setIsFavorite] = useState(task.isFavorite);
   const [isComplete, setIsComplete] = useState(task.isComplete);
+
+  // Watch changes on task.isFavorite property
+  useEffect(() => setIsFavorite(task.isFavorite), [task.isFavorite, setIsFavorite]);
 
   const toggleStatus = () => {
     setIsComplete(!isComplete);
@@ -22,8 +26,8 @@ export function TaskItem({ task, onTaskUpdate, onClick }: Props) {
   };
 
   const toggleFavorite = () => {
-    setIsFavorited(!isFavorited);
-    task.isFavorite = !isFavorited;
+    setIsFavorite(!isFavorite);
+    task.isFavorite = !isFavorite;
     onTaskUpdate(task);
   };
 
@@ -33,11 +37,13 @@ export function TaskItem({ task, onTaskUpdate, onClick }: Props) {
       return undefined;
     }
 
-    onClick(task);
+    if (onClick) {
+      onClick(task);
+    }
   };
 
   return (
-    <Container isComplete={isComplete} onClick={onTaskClicked} tabIndex={-1}>
+    <Container isDetails={isDetails} isComplete={isComplete} onClick={onTaskClicked} tabIndex={-1}>
       <StatusButton
         onClick={toggleStatus}
         data-testid="taskStatusButton"
@@ -49,7 +55,7 @@ export function TaskItem({ task, onTaskUpdate, onClick }: Props) {
       <span>{task.content}</span>
 
       <FavoriteButton onClick={toggleFavorite}>
-        <img src={isFavorited ? Favorited : ToFavorite} alt="favorite" />
+        <img src={isFavorite ? Favorited : ToFavorite} alt="favorite" />
       </FavoriteButton>
     </Container>
   );

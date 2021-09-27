@@ -1,10 +1,14 @@
 export class Task {
   id!: number;
+  note!: string;
   createdAt!: Date;
   updatedAt!: Date;
+  dueDate!: Date | null;
   listId!: string | null;
+  reminderDate!: Date | null;
   private _isComplete!: boolean;
   private _isFavorite!: boolean;
+  private _belongsToMyDay!: boolean;
 
   constructor(public content: string, listId = null) {
     this.id = Date.now();
@@ -34,5 +38,14 @@ export class Task {
 
   get isFavorite(): boolean {
     return this._isFavorite;
+  }
+
+  set belongsToMyDay(value: boolean) {
+    this._belongsToMyDay = value;
+    this.updateUpdatedAt();
+  }
+
+  get belongsToMyDay(): boolean {
+    return this._belongsToMyDay;
   }
 }
