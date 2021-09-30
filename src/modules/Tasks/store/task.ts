@@ -1,6 +1,8 @@
+import { Step } from "./step";
 export class Task {
   id!: number;
   note!: string;
+  steps!: Step[];
   createdAt!: Date;
   updatedAt!: Date;
   dueDate!: Date | null;
@@ -11,11 +13,12 @@ export class Task {
   private _belongsToMyDay!: boolean;
 
   constructor(public content: string, listId = null) {
+    this.steps = [];
+    this.listId = listId;
     this.id = Date.now();
     this.isComplete = false;
     this.createdAt = new Date();
     this.updatedAt = new Date();
-    this.listId = listId;
   }
 
   private updateUpdatedAt() {

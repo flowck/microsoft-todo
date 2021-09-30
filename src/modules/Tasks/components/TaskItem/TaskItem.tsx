@@ -1,9 +1,10 @@
-import { MouseEvent, useEffect, useState } from "react";
 import Check from "@/common/icons/check.svg";
 import { Task } from "@/modules/Tasks/store/task";
 import Favorited from "@/common/icons/favorited.svg";
 import ToFavorite from "@/common/icons/toFavorite.svg";
-import { Container, StatusButton, FavoriteButton } from "@/modules/Tasks/components/TaskItem/TaskItemStyles";
+import { MouseEvent, useEffect, useState } from "react";
+import { StatusButton } from "@/common/components/StatusButton/StatusButton";
+import { Container, FavoriteButton } from "@/modules/Tasks/components/TaskItem/TaskItemStyles";
 
 interface Props {
   task: Task;
@@ -44,11 +45,7 @@ export function TaskItem({ task, onTaskUpdate, onClick, isDetails }: Props) {
 
   return (
     <Container isDetails={isDetails} isComplete={isComplete} onClick={onTaskClicked} tabIndex={-1}>
-      <StatusButton
-        onClick={toggleStatus}
-        data-testid="taskStatusButton"
-        className={isComplete ? "status-button--complete" : ""}
-      >
+      <StatusButton size="16px" isComplete={isComplete} onClick={toggleStatus} data-testid="taskStatusButton">
         {isComplete ? <img src={Check} alt="Status" /> : null}
       </StatusButton>
 
