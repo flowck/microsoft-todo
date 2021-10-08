@@ -15,7 +15,7 @@ import { createAction } from "@/common/store/utils";
 import CalendarIcon from "@/common/icons/calendar.svg";
 import { useDispatch, useSelector } from "react-redux";
 import ArrowClose from "@/common/icons/arrow-close.svg";
-import { UPDATE_TASK } from "@/modules/Tasks/store/actions";
+import { REMOVE_TASK, UPDATE_TASK } from "@/modules/Tasks/store/actions";
 import {
   Container,
   AddStepForm,
@@ -39,6 +39,11 @@ export function DetailsBar({ onClose }: Props) {
 
   const updateTask = (_task?: Task) => {
     dispatch(createAction<Task>(UPDATE_TASK, _task || (task as Task)));
+  };
+
+  const removeTask = () => {
+    onClose();
+    dispatch(createAction<number>(REMOVE_TASK, task?.id));
   };
 
   const updateTaskNote = (event: FormEvent) => {
@@ -118,7 +123,7 @@ export function DetailsBar({ onClose }: Props) {
           <img src={ArrowClose} alt="Close" />
         </button>
         <span>Created {createdAt}</span>
-        <button type="button">
+        <button type="button" onClick={removeTask}>
           <img src={Trash} alt="Remove task" />
         </button>
       </DetailsFooter>
