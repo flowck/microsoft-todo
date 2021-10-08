@@ -19,9 +19,13 @@ export const DetailsItems = styled.ul`
   li {
     display: flex;
     font-size: 14px;
-    padding: 14px 0;
     color: #959595;
     align-items: center;
+  }
+
+  // Apply to first level li only
+  & > li {
+    padding: 14px 0;
     border-bottom: 1px solid #3d3d40;
   }
 `;
