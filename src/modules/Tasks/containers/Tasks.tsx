@@ -1,5 +1,5 @@
-import { useMemo, useState } from "react";
 import { RootState } from "@/store";
+import { useMemo, useState } from "react";
 import { Task } from "@/modules/Tasks/store/task";
 import { createAction } from "@/common/store/utils";
 import { useDispatch, useSelector } from "react-redux";
@@ -45,14 +45,14 @@ export function Tasks() {
         </ContainerHeader>
 
         <TaskList data-testid="listOfTasks">
-          {tasks.length ? renderTasks(!IS_COMPLETE) : null}
+          {tasks.length && renderTasks(!IS_COMPLETE)}
 
-          {hasCompletedTasks ? (
+          {hasCompletedTasks && (
             <>
               <CompletedTag>Completed</CompletedTag>
               {renderTasks(IS_COMPLETE)}
             </>
-          ) : null}
+          )}
         </TaskList>
 
         <AddTask />
