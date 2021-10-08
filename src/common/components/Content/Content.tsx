@@ -1,7 +1,7 @@
+import { ContentContainer } from "./ContentStyles";
 import { MyDay } from "@/modules/MyDay/containers/MyDay";
 import { Tasks } from "@/modules/Tasks/containers/Tasks";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { ContentContainer } from "./ContentStyles";
 
 export function Content() {
   return (

@@ -11,15 +11,21 @@ const Button = styled.button`
   background-color: transparent;
 `;
 
-export const Container = styled.article.attrs((props: { isComplete?: boolean }) => props)`
+interface ContainerProps {
+  isComplete?: boolean;
+  isDetails: boolean;
+}
+
+export const Container = styled.article.attrs((props: ContainerProps) => props)`
   color: #fff;
   display: flex;
-  padding: 14px;
+  cursor: pointer;
   font-size: 14px;
   border-radius: 5px;
-  align-items: center;
   margin-bottom: 1px;
+  align-items: center;
   background-color: #323232;
+  padding: 14px ${({ isDetails }) => (isDetails ? 0 : "14px")};
 
   span {
     flex-grow: 1;

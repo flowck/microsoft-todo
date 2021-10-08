@@ -1,18 +1,24 @@
-import { useState } from "react";
 import Check from "@/common/icons/check.svg";
 import { Task } from "@/modules/Tasks/store/task";
 import Favorited from "@/common/icons/favorited.svg";
 import ToFavorite from "@/common/icons/toFavorite.svg";
-import { Container, StatusButton, FavoriteButton } from "@/modules/Tasks/components/TaskItem/TaskItemStyles";
+import { MouseEvent, useEffect, useState } from "react";
+import { StatusButton } from "@/common/components/StatusButton/StatusButton";
+import { Container, FavoriteButton } from "@/modules/Tasks/components/TaskItem/TaskItemStyles";
 
 interface Props {
   task: Task;
+  isDetails: boolean;
+  onClick?(task: Task): void;
   onTaskUpdate(task: Task): void;
 }
 
-export function TaskItem({ task, onTaskUpdate }: Props) {
-  const [isFavorited, setIsFavorited] = useState(false);
+export function TaskItem({ task, onTaskUpdate, onClick, isDetails }: Props) {
+  const [isFavorite, setIsFavorite] = useState(task.isFavorite);
   const [isComplete, setIsComplete] = useState(task.isComplete);
+
+  // Watch changes on task.isFavorite property
+  useEffect(() => setIsFavorite(task.isFavorite), [task.isFavorite, setIsFavorite]);
 
   const toggleStatus = () => {
     setIsComplete(!isComplete);
@@ -21,25 +27,32 @@ export function TaskItem({ task, onTaskUpdate }: Props) {
   };
 
   const toggleFavorite = () => {
-    setIsFavorited(!isFavorited);
-    task.isFavorite = !isFavorited;
+    setIsFavorite(!isFavorite);
+    task.isFavorite = !isFavorite;
     onTaskUpdate(task);
   };
 
+  const onTaskClicked = (event: MouseEvent) => {
+    const targetTagName = (event.target as HTMLElement).tagName;
+    if (targetTagName.match(/img|button/i)) {
+      return undefined;
+    }
+
+    if (onClick) {
+      onClick(task);
+    }
+  };
+
   return (
-    <Container isComplete={isComplete}>
-      <StatusButton
-        onClick={toggleStatus}
-        data-testid="taskStatusButton"
-        className={isComplete ? "status-button--complete" : ""}
-      >
+    <Container isDetails={isDetails} isComplete={isComplete} onClick={onTaskClicked} tabIndex={-1}>
+      <StatusButton size="16px" isComplete={isComplete} onClick={toggleStatus} data-testid="taskStatusButton">
         {isComplete ? <img src={Check} alt="Status" /> : null}
       </StatusButton>
 
       <span>{task.content}</span>
 
       <FavoriteButton onClick={toggleFavorite}>
-        <img src={isFavorited ? Favorited : ToFavorite} alt="favorite" />
+        <img src={isFavorite ? Favorited : ToFavorite} alt="favorite" />
       </FavoriteButton>
     </Container>
   );

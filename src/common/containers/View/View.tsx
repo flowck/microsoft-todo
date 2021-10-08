@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const View = styled.section`
-  padding: 28px 18px;
+  width: 100%;
   min-height: 100vh;
+  padding: 28px 18px;
 `;
