@@ -3,6 +3,7 @@ import { Step } from "./step";
 export interface RawTask {
   id: number;
   steps: Step[];
+  note: string;
   createdAt: Date;
   updatedAt: Date;
   content: string;
@@ -28,6 +29,7 @@ export class Task {
   private _belongsToMyDay!: boolean;
 
   constructor(public content: string, listId: string | null = null) {
+    this.note = "";
     this.id = Date.now();
     this.listId = listId;
     this.isComplete = false;
@@ -38,11 +40,12 @@ export class Task {
   static create(task: RawTask): Task {
     const _task = new Task(task.content, task.listId);
     _task.id = task.id;
+    _task.note = task.note;
+    _task.steps = task.steps;
     _task.createdAt = task.createdAt;
     _task.updatedAt = task.updatedAt;
     _task._isFavorite = task._isFavorite;
     _task._isComplete = task._isComplete;
-    _task.steps = task.steps;
     _task.reminderDate = task.reminderDate;
     _task.belongsToMyDay = task._belongsToMyDay;
 
