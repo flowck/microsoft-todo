@@ -1,31 +1,25 @@
 import { RootState } from "@/store";
-import { FormEvent, useState } from "react";
-import Trash from "@/common/icons/trash.svg";
-import SunIcon from "@/common/icons/sun.svg";
-import BellIcon from "@/common/icons/bell.svg";
-import ClipIcon from "@/common/icons/clip.svg";
+import { Icons } from "@/common/icons";
 import { TaskItem } from "../TaskItem/TaskItem";
 import * as DateUtil from "@/common/utils/dates";
 import { Step } from "@/modules/Tasks/store/step";
 import { ListSteps } from "../ListSteps/ListSteps";
-import AddIcon from "@/common/icons/add-task.svg";
 import { Task } from "@/modules/Tasks/store/task";
-import RepeatIcon from "@/common/icons/repeat.svg";
 import { createAction } from "@/common/store/utils";
-import CalendarIcon from "@/common/icons/calendar.svg";
 import { useDispatch, useSelector } from "react-redux";
-import ArrowClose from "@/common/icons/arrow-close.svg";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { REMOVE_TASK, UPDATE_TASK } from "@/modules/Tasks/store/actions";
 import {
   Container,
   AddStepForm,
-  AddNoteForm,
+  AddNoteInput,
   DetailsIcon,
   DetailsItems,
   DetailsFooter,
   DetailsContent,
   StepsContainer,
 } from "@/modules/Tasks/components/DetailsBar/DetailsBarStyles";
+const { AddIcon, ArrowCloseIcon, TrashIcon } = Icons;
 
 interface Props {
   onClose(): void;
@@ -36,6 +30,13 @@ export function DetailsBar({ onClose }: Props) {
   const [step, setStep] = useState("");
   const task = useSelector<RootState, Task | null>(({ tasksModule }) => tasksModule.activeTask);
   const createdAt = DateUtil.format(task?.createdAt);
+  const noteTextAreaElement = useRef(null);
+
+  useEffect(() => {
+    if (noteTextAreaElement.current && task) {
+      (noteTextAreaElement.current as HTMLTextAreaElement).value = task.note;
+    }
+  }, [task]);
 
   const updateTask = (_task?: Task) => {
     dispatch(createAction<Task>(UPDATE_TASK, _task || (task as Task)));
@@ -91,7 +92,7 @@ export function DetailsBar({ onClose }: Props) {
               </AddStepForm>
             </StepsContainer>
           </li>
-          <li>
+          {/* <li>
             <DetailsIcon src={SunIcon} alt="Add to my day" />
             Add to My Day
           </li>
@@ -110,21 +111,24 @@ export function DetailsBar({ onClose }: Props) {
           <li>
             <DetailsIcon src={ClipIcon} alt="Add File" />
             Add File
-          </li>
+          </li> */}
           <li>
-            <AddNoteForm onSubmit={() => updateTask}>
-              <textarea onBlur={() => updateTask} onInput={updateTaskNote} placeholder="Add Note" value={task?.note} />
-            </AddNoteForm>
+            <AddNoteInput
+              placeholder="Add Note"
+              onInput={updateTaskNote}
+              ref={noteTextAreaElement}
+              onBlur={() => updateTask()}
+            />
           </li>
         </DetailsItems>
       </DetailsContent>
       <DetailsFooter>
         <button type="button" onClick={onClose}>
-          <img src={ArrowClose} alt="Close" />
+          <img src={ArrowCloseIcon} alt="Close" />
         </button>
         <span>Created {createdAt}</span>
         <button type="button" onClick={removeTask}>
-          <img src={Trash} alt="Remove task" />
+          <img src={TrashIcon} alt="Remove task" />
         </button>
       </DetailsFooter>
     </Container>

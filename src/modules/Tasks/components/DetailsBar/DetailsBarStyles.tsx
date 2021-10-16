@@ -58,21 +58,19 @@ export const DetailsFooter = styled.footer`
   }
 `;
 
-export const AddNoteForm = styled.form`
-  textarea {
-    width: 100%;
-    height: 90px;
-    border: none;
-    resize: none;
-    font-size: 14px;
-    color: #959595;
-    font-family: var(--font-body);
-    background-color: transparent;
+export const AddNoteInput = styled.textarea`
+  width: 100%;
+  height: 90px;
+  border: none;
+  resize: none;
+  font-size: 14px;
+  color: #959595;
+  font-family: var(--font-body);
+  background-color: transparent;
 
-    &:focus,
-    &:active {
-      outline: none;
-    }
+  &:focus,
+  &:active {
+    outline: none;
   }
 `;
 
