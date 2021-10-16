@@ -1,3 +1,38 @@
+# [1.1.0](https://github.com/flowck/microsoft-todo/compare/v1.0.2...v1.1.0) (2021-09-22)
+
+
+### Features
+
+* **#20:** add favorite feature ([0efbd49](https://github.com/flowck/microsoft-todo/commit/0efbd494b35c9dd64c21e46ff77f613034553c58)), closes [#20](https://github.com/flowck/microsoft-todo/issues/20)
+* **#21:** add memo to check for completed tasks ([34c8f5b](https://github.com/flowck/microsoft-todo/commit/34c8f5b4d70fa8752bc1929666fc67a4bbb93e80)), closes [#21](https://github.com/flowck/microsoft-todo/issues/21)
+* **#21:** adjust sidebar's top and bottom padding ([0e29c8a](https://github.com/flowck/microsoft-todo/commit/0e29c8a1e75f3a7cd797bb1c339617e52f098f4c)), closes [#21](https://github.com/flowck/microsoft-todo/issues/21)
+* **#21:** change task style when it is complete ([112a3f5](https://github.com/flowck/microsoft-todo/commit/112a3f5ccd02133e9bbb3d220980f55be3438f7b)), closes [#21](https://github.com/flowck/microsoft-todo/issues/21)
+* **#21:** look for tests inside ./src ([3f3e6d6](https://github.com/flowck/microsoft-todo/commit/3f3e6d6c4cc9eee943619f38f2b039f9aa1af3ec)), closes [#21](https://github.com/flowck/microsoft-todo/issues/21)
+* **#21:** move Tasks container styles to a separate file ([e241b34](https://github.com/flowck/microsoft-todo/commit/e241b345d4b077f61dce82ecb400c02641d62363)), closes [#21](https://github.com/flowck/microsoft-todo/issues/21)
+* **#21:** ocd ([6c0f615](https://github.com/flowck/microsoft-todo/commit/6c0f61577c097c1868ea3ba4ecbef031b7ad9591)), closes [#21](https://github.com/flowck/microsoft-todo/issues/21)
+* **#21:** redirect from / to tasks ([480d205](https://github.com/flowck/microsoft-todo/commit/480d205d7303ad0640acd11506a6611d3056fc24)), closes [#21](https://github.com/flowck/microsoft-todo/issues/21)
+* **#21:** test add task feature ([d69dc57](https://github.com/flowck/microsoft-todo/commit/d69dc573105d8508da38275555e6cad136c7211a)), closes [#21](https://github.com/flowck/microsoft-todo/issues/21)
+* **#21:** update task ([a57d4f3](https://github.com/flowck/microsoft-todo/commit/a57d4f3500c2ac90184e7c779b5ddc7bafc2bfc3)), closes [#21](https://github.com/flowck/microsoft-todo/issues/21)
+* **#65:** add sonar config file and pipeline step ([0910950](https://github.com/flowck/microsoft-todo/commit/091095074153b616b918a0e2dbb719962e9c9afa)), closes [#65](https://github.com/flowck/microsoft-todo/issues/65)
+
+## [1.0.2](https://github.com/flowck/microsoft-todo/compare/v1.0.1...v1.0.2) (2021-09-20)
+
+
+### Bug Fixes
+
+* **54:** move release job to main pipeline ([7fe78b8](https://github.com/flowck/microsoft-todo/commit/7fe78b826aff1f47f2715d45b1b8352dd1de05e1))
+
+## [1.0.1](https://github.com/flowck/microsoft-todo/compare/v1.0.0...v1.0.1) (2021-09-20)
+
+
+### Bug Fixes
+
+* **54:** add github token ([bfe8c2c](https://github.com/flowck/microsoft-todo/commit/bfe8c2c2593802649464944189fc9ca22faaff14))
+* **54:** debug ([fd1e108](https://github.com/flowck/microsoft-todo/commit/fd1e1085a89ccfce6d4995ce13b239066eb16642))
+* **54:** disable ci verification and dry run ([4a7907c](https://github.com/flowck/microsoft-todo/commit/4a7907cb6d8b60a0746bf891d4f1f0301974da8f))
+* **54:** release from ci pipeline ([c7dedd8](https://github.com/flowck/microsoft-todo/commit/c7dedd8adc9923dc5caabfa50ae7967dd2df93fa))
+* **54:** upgrade semantic-release ([43f8311](https://github.com/flowck/microsoft-todo/commit/43f8311f4eca2cde21a8041170635a0e22b8d5b0))
+
 # 1.0.0 (2021-09-20)
 
 
