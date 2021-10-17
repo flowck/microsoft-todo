@@ -1,3 +1,35 @@
+# [1.2.0](https://github.com/flowck/microsoft-todo/compare/v1.1.0...v1.2.0) (2021-10-17)
+
+
+### Bug Fixes
+
+* **#22:** add activeTask property in the store ([e05a465](https://github.com/flowck/microsoft-todo/commit/e05a4657e5390bcbaf0a60739407d7bb8fa849a7)), closes [#22](https://github.com/flowck/microsoft-todo/issues/22)
+* **#22:** add details bar controls ([8db2688](https://github.com/flowck/microsoft-todo/commit/8db268868078c04f4c73634a35b957acbe5f12a8)), closes [#22](https://github.com/flowck/microsoft-todo/issues/22)
+* **#22:** add icons ([5b15dcd](https://github.com/flowck/microsoft-todo/commit/5b15dcd77a3fdde3fa09acd696c0f6675b7bcd42)), closes [#22](https://github.com/flowck/microsoft-todo/issues/22)
+* **#22:** add new close and trash icon ([98b0187](https://github.com/flowck/microsoft-todo/commit/98b0187f921b77fa4ae1587d41a9c98d66da1fa4))
+* **#22:** add util to format dates ([14c85ba](https://github.com/flowck/microsoft-todo/commit/14c85ba542f72c037d1c02250c85442ae0de90f1)), closes [#22](https://github.com/flowck/microsoft-todo/issues/22)
+* **#22:** prevent isFavorite setter from mutating the wrong property ([d7121f4](https://github.com/flowck/microsoft-todo/commit/d7121f45e6e8ee73b03fb2d66ea23343d6b177da)), closes [#22](https://github.com/flowck/microsoft-todo/issues/22)
+* **#22:** remove onBlur event and update onClick prop ([84265dc](https://github.com/flowck/microsoft-todo/commit/84265dcdeada3beba21796074e44b3a3a74646c4)), closes [#22](https://github.com/flowck/microsoft-todo/issues/22)
+* **#22:** set active task on click ([3e1283b](https://github.com/flowck/microsoft-todo/commit/3e1283b7f017b71d6a541b85ffc01711f2559ccd)), closes [#22](https://github.com/flowck/microsoft-todo/issues/22)
+
+
+### Features
+
+* **#15:** add color helper to retrieve the main color ([559cda2](https://github.com/flowck/microsoft-todo/commit/559cda239fdce897cd7e1e4a599cd7877cbb605f)), closes [#15](https://github.com/flowck/microsoft-todo/issues/15)
+* **#15:** add context to share tasksType ([fd8e362](https://github.com/flowck/microsoft-todo/commit/fd8e3626816cb00acd3b9d0004565a29d75587c5)), closes [#15](https://github.com/flowck/microsoft-todo/issues/15)
+* **#15:** reuse tasks module to render other views ([ad09a1d](https://github.com/flowck/microsoft-todo/commit/ad09a1d4541a1d08c7cd15edf55ecb9e3b3b1a5d)), closes [#15](https://github.com/flowck/microsoft-todo/issues/15)
+* **#15:** transform svgs into functional components ([fec6bbe](https://github.com/flowck/microsoft-todo/commit/fec6bbebdee598edd9f31477a87fcba697d5f593)), closes [#15](https://github.com/flowck/microsoft-todo/issues/15)
+* **#15:** update test case ([f40b88c](https://github.com/flowck/microsoft-todo/commit/f40b88cadc697b86eba6ce89c74d18f8f5190ce6)), closes [#15](https://github.com/flowck/microsoft-todo/issues/15)
+* **#22:** add and update task's steps ([1a23cee](https://github.com/flowck/microsoft-todo/commit/1a23cee064656d1be7ed5c2e896a7fdb2acdf506)), closes [#22](https://github.com/flowck/microsoft-todo/issues/22)
+* **#22:** add index to reexport  icons ([8052677](https://github.com/flowck/microsoft-todo/commit/805267762575bf292eecb2e115878975594e1a72)), closes [#22](https://github.com/flowck/microsoft-todo/issues/22)
+* **#22:** add task details sidebar ([25b87bb](https://github.com/flowck/microsoft-todo/commit/25b87bbc45ceced8f5a81f3cbdc8eae2380d608a)), closes [#22](https://github.com/flowck/microsoft-todo/issues/22)
+* **#22:** render taskItem into details bar ([f69f39d](https://github.com/flowck/microsoft-todo/commit/f69f39d3f936b4dfa336fd7a9e7bc2098b4ccdaa)), closes [#22](https://github.com/flowck/microsoft-todo/issues/22)
+* **#22:** update task's note ([69b83c2](https://github.com/flowck/microsoft-todo/commit/69b83c2b10b5fcbd8517d32c9a21de2b6c401a8e)), closes [#22](https://github.com/flowck/microsoft-todo/issues/22)
+* **#23:** remove task and close sidebar ([e205616](https://github.com/flowck/microsoft-todo/commit/e2056165bdef190ccd15f7116f702a8a5936b949))
+* **#44:** add redux-persist ([e3877cb](https://github.com/flowck/microsoft-todo/commit/e3877cbc1ec82d3f0309f712ddc9aaea27670063)), closes [#44](https://github.com/flowck/microsoft-todo/issues/44)
+* **#44:** integrate redux-persist into the existing store ([228d33a](https://github.com/flowck/microsoft-todo/commit/228d33ae56a225047e7de8314f8cd6e9216f4f16)), closes [#44](https://github.com/flowck/microsoft-todo/issues/44)
+* **#44:** transform rehidrated data up cache restore ([0ab9d26](https://github.com/flowck/microsoft-todo/commit/0ab9d2623a06e4d9d65dcb6b6e320c5158d0702d)), closes [#44](https://github.com/flowck/microsoft-todo/issues/44)
+
 # [1.1.0](https://github.com/flowck/microsoft-todo/compare/v1.0.2...v1.1.0) (2021-09-22)
 
 
