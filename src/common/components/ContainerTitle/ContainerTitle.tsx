@@ -1,8 +1,10 @@
 import styled from "styled-components";
+import { TaskTypeProp } from "@/common/typing";
+import { getMainColor } from "@/modules/Tasks/utils/colors";
 
-export const ContainerTitle = styled.h1<Record<string, string>>`
+export const ContainerTitle = styled.h1.attrs((props: TaskTypeProp) => props)`
   font-size: 24px;
   margin-bottom: 14px;
   font-family: var(--font-bold);
-  color: ${({ color }) => (color ? color : "#778BDD")};
+  color: ${({ tasksType }) => getMainColor(tasksType)};
 `;

@@ -39,3 +39,12 @@ modules
 | ------------ | ------- | ----------------------------------- |
 | Staging      | develop | https://staging.ms-todo.changani.me |
 | Production   | main    | https://ms-todo.changani.me         |
+
+## Stack
+
+- [ ] React
+- [ ] Typescript
+- [ ] Redux
+- [ ] Redux-Persist
+- [ ] Redux-Logger
+- [ ] Styled-Components

@@ -1,6 +1,13 @@
 import styled from "styled-components";
+import { getMainColor } from "@/modules/Tasks/utils/colors";
+import { TaskContainerType, TaskTypeProp } from "@/common/typing";
 
-const Button = styled.button`
+interface ContainerProps extends TaskTypeProp {
+  isDetails: boolean;
+  isComplete?: boolean;
+}
+
+export const Button = styled.button`
   width: 16px;
   height: 16px;
   border: none;
@@ -11,15 +18,16 @@ const Button = styled.button`
   background-color: transparent;
 `;
 
-export const Container = styled.article.attrs((props: { isComplete?: boolean }) => props)`
+export const Container = styled.article.attrs((props: ContainerProps) => props)`
   color: #fff;
   display: flex;
-  padding: 14px;
+  cursor: pointer;
   font-size: 14px;
   border-radius: 5px;
-  align-items: center;
   margin-bottom: 1px;
+  align-items: center;
   background-color: #323232;
+  padding: 14px ${({ isDetails }) => (isDetails ? 0 : "14px")};
 
   span {
     flex-grow: 1;
@@ -34,16 +42,21 @@ export const StatusButton = styled(Button)`
   border: 2px solid #8e8e8e;
 
   &.status-button--complete {
-    border-color: #778bdd;
-    background-color: #778bdd;
+    border-color: ${({ tasksType }: TaskTypeProp) => getMainColor(tasksType as TaskContainerType)};
+    background-color: ${({ tasksType }: TaskTypeProp) => getMainColor(tasksType as TaskContainerType)};
   }
 
   img {
     width: 8px;
   }
 `;
+
 export const FavoriteButton = styled(Button)`
-  img {
+  width: 20px;
+  height: 20px;
+
+  svg {
     width: 16px;
+    height: 16px;
   }
 `;

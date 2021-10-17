@@ -1,4 +1,4 @@
-import { BaseProps } from "@/common/interfaces";
+import { BaseProps } from "@/common/typing";
 import styled from "styled-components";
 
 const Container = styled.div`

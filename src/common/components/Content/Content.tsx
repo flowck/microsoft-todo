@@ -1,7 +1,7 @@
-import { MyDay } from "@/modules/MyDay/containers/MyDay";
+import { ContentContainer } from "./ContentStyles";
+import { TaskContainerTypes } from "@/common/typing";
 import { Tasks } from "@/modules/Tasks/containers/Tasks";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { ContentContainer } from "./ContentStyles";
 
 export function Content() {
   return (
@@ -11,13 +11,19 @@ export function Content() {
           <Redirect to="/tasks"></Redirect>
         </Route>
         <Route path="/my-day">
-          <MyDay></MyDay>
+          <Tasks title="My Day" tasksType={TaskContainerTypes.MYDAY}></Tasks>
         </Route>
-        <Route path="/important"></Route>
-        <Route path="/planned"></Route>
-        <Route path="/assigned-to-me"></Route>
+        <Route path="/important">
+          <Tasks title="Important" tasksType={TaskContainerTypes.IMPORTANT}></Tasks>
+        </Route>
+        <Route path="/planned">
+          <Tasks title="Planned" tasksType={TaskContainerTypes.PLANNED}></Tasks>
+        </Route>
+        <Route path="/assigned-to-me">
+          <Tasks title="Assigned to me" tasksType={TaskContainerTypes.ASSIGNED_TO_ME}></Tasks>
+        </Route>
         <Route path="/tasks">
-          <Tasks></Tasks>
+          <Tasks title="Tasks" tasksType={TaskContainerTypes.TASKS}></Tasks>
         </Route>
         <Route exact path="/groups/:groupId/:listId"></Route>
       </Switch>
