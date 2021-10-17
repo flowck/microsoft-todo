@@ -2,7 +2,7 @@ import thunk from "redux-thunk";
 import logger from "redux-logger";
 import { Provider } from "react-redux";
 import storage from "redux-persist/lib/storage";
-import { BaseProps } from "./common/interfaces";
+import { BaseProps } from "./common/typing";
 import { tasksReducer } from "@/modules/Tasks/store/reducer";
 import { persistStore, persistReducer } from "redux-persist";
 import { tasksModuleTransformer } from "./modules/Tasks/store/transforms";

@@ -1,6 +1,13 @@
 import styled from "styled-components";
+import { getMainColor } from "@/modules/Tasks/utils/colors";
+import { TaskContainerType, TaskTypeProp } from "@/common/typing";
 
-const Button = styled.button`
+interface ContainerProps extends TaskTypeProp {
+  isDetails: boolean;
+  isComplete?: boolean;
+}
+
+export const Button = styled.button`
   width: 16px;
   height: 16px;
   border: none;
@@ -10,11 +17,6 @@ const Button = styled.button`
   justify-content: center;
   background-color: transparent;
 `;
-
-interface ContainerProps {
-  isComplete?: boolean;
-  isDetails: boolean;
-}
 
 export const Container = styled.article.attrs((props: ContainerProps) => props)`
   color: #fff;
@@ -40,16 +42,21 @@ export const StatusButton = styled(Button)`
   border: 2px solid #8e8e8e;
 
   &.status-button--complete {
-    border-color: #778bdd;
-    background-color: #778bdd;
+    border-color: ${({ tasksType }: TaskTypeProp) => getMainColor(tasksType as TaskContainerType)};
+    background-color: ${({ tasksType }: TaskTypeProp) => getMainColor(tasksType as TaskContainerType)};
   }
 
   img {
     width: 8px;
   }
 `;
+
 export const FavoriteButton = styled(Button)`
-  img {
+  width: 20px;
+  height: 20px;
+
+  svg {
     width: 16px;
+    height: 16px;
   }
 `;

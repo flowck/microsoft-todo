@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { getMainColor } from "../utils/colors";
+import { TaskTypeProp } from "@/common/typing";
 import { View } from "@/common/containers/View/View";
 
 export const Container = styled(View)`
@@ -16,14 +18,14 @@ export const TaskList = styled.div`
   flex-grow: 1;
 `;
 
-export const CompletedTag = styled.span`
+export const CompletedTag = styled.span.attrs((props: TaskTypeProp) => props)`
   padding: 0 5px;
   margin: 10px 0;
   font-size: 12px;
-  color: #778bdd;
   border-radius: 3px;
   display: inline-block;
   background-color: #262626;
+  color: ${({ tasksType }) => getMainColor(tasksType)};
 `;
 
 export const DetailsSidebar = styled.div`

@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { TaskTypeProp } from "@/common/typing";
+import { getMainColor } from "../../utils/colors";
 
 export const Container = styled.aside`
   width: 100%;
@@ -28,12 +30,12 @@ export const DetailsItems = styled.ul`
     padding: 14px 0;
     border-bottom: 1px solid #3d3d40;
   }
-`;
 
-export const DetailsIcon = styled.img`
-  width: 14px;
-  height: 14px;
-  margin-right: 10px;
+  svg {
+    width: 14px;
+    height: 14px;
+    margin-right: 10px;
+  }
 `;
 
 export const DetailsFooter = styled.footer`
@@ -78,15 +80,15 @@ export const StepsContainer = styled.div`
   width: 100%;
 `;
 
-export const AddStepForm = styled.form`
+export const AddStepForm = styled.form.attrs((props: TaskTypeProp) => props)`
   width: 100%;
   display: flex;
   align-items: center;
 
   input {
     border: none;
-    color: #778bdd;
     background-color: transparent;
+    color: ${({ tasksType }) => getMainColor(tasksType)};
 
     &:focus,
     &:active {

@@ -1,8 +1,11 @@
 import Check from "@/common/icons/check.svg";
 import { Task } from "@/modules/Tasks/store/task";
-import Favorited from "@/common/icons/favorited.svg";
-import ToFavorite from "@/common/icons/toFavorite.svg";
-import { MouseEvent, useEffect, useState } from "react";
+// import Favorited from "@/common/icons/favorited.svg";
+// import ToFavorite from "@/common/icons/toFavorite.svg";
+import { getMainColor } from "@/modules/Tasks/utils/colors";
+import { ImportantIcon } from "@/common/icons/ImportantIcon";
+import { MouseEvent, useContext, useEffect, useState } from "react";
+import { TasksContext } from "@/modules/Tasks/containers/TasksContext";
 import { StatusButton } from "@/common/components/StatusButton/StatusButton";
 import { Container, FavoriteButton } from "@/modules/Tasks/components/TaskItem/TaskItemStyles";
 
@@ -14,11 +17,12 @@ interface Props {
 }
 
 export function TaskItem({ task, onTaskUpdate, onClick, isDetails }: Props) {
-  const [isFavorite, setIsFavorite] = useState(task.isFavorite);
+  const [isImportant, setIsImportant] = useState(task.isImportant);
   const [isComplete, setIsComplete] = useState(task.isComplete);
+  const { tasksType } = useContext(TasksContext);
 
-  // Watch changes on task.isFavorite property
-  useEffect(() => setIsFavorite(task.isFavorite), [task.isFavorite, setIsFavorite]);
+  // Watch changes on task.isImportant property
+  useEffect(() => setIsImportant(task.isImportant), [task.isImportant, setIsImportant]);
 
   const toggleStatus = () => {
     setIsComplete(!isComplete);
@@ -26,33 +30,42 @@ export function TaskItem({ task, onTaskUpdate, onClick, isDetails }: Props) {
     onTaskUpdate(task);
   };
 
-  const toggleFavorite = () => {
-    setIsFavorite(!isFavorite);
-    task.isFavorite = !isFavorite;
+  const toggleFavorite = (event: MouseEvent) => {
+    event.stopPropagation();
+
+    task.isImportant = !isImportant;
+    setIsImportant(!isImportant);
     onTaskUpdate(task);
   };
 
   const onTaskClicked = (event: MouseEvent) => {
-    const targetTagName = (event.target as HTMLElement).tagName;
-    if (targetTagName.match(/img|button/i)) {
-      return undefined;
-    }
-
     if (onClick) {
       onClick(task);
     }
   };
 
   return (
-    <Container isDetails={isDetails} isComplete={isComplete} onClick={onTaskClicked} tabIndex={-1}>
-      <StatusButton size="16px" isComplete={isComplete} onClick={toggleStatus} data-testid="taskStatusButton">
+    <Container
+      tabIndex={-1}
+      tasksType={tasksType}
+      isDetails={isDetails}
+      isComplete={isComplete}
+      onClick={onTaskClicked}
+    >
+      <StatusButton
+        size="16px"
+        tasksType={tasksType}
+        onClick={toggleStatus}
+        isComplete={isComplete}
+        data-testid="taskStatusButton"
+      >
         {isComplete ? <img src={Check} alt="Status" /> : null}
       </StatusButton>
 
       <span>{task.content}</span>
 
       <FavoriteButton onClick={toggleFavorite}>
-        <img src={isFavorite ? Favorited : ToFavorite} alt="favorite" />
+        <ImportantIcon filled={isImportant} color={getMainColor(tasksType)} />
       </FavoriteButton>
     </Container>
   );

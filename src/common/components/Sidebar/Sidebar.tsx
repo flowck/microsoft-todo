@@ -1,20 +1,20 @@
 import {
   Nav,
-  ListsNav,
+  // ListsNav,
   Container,
   UserAvatar,
-  AddButtons,
+  // AddButtons,
   UserControl,
   UserDetails,
   SeparatorLine,
   SearchControl,
-  ListsGroupsNav,
+  // ListsGroupsNav,
 } from "./SidebarStyles";
 import Search from "@/common/icons/search.svg";
-import NewListIcon from "@/common/icons/add.svg";
-import { groups, lists, menuItems } from "./mock";
-import NewGroupIcon from "@/common/icons/add-group.svg";
-import { renderGroups, renderMenuItems, renderLists } from "./renders";
+// import NewListIcon from "@/common/icons/add.svg";
+import { /*groups, lists,*/ menuItems } from "./mock";
+// import NewGroupIcon from "@/common/icons/add-group.svg";
+import { /*renderGroups,*/ renderMenuItems /*renderLists*/ } from "./renders";
 
 export function Sidebar() {
   return (
@@ -38,7 +38,7 @@ export function Sidebar() {
 
       <SeparatorLine />
 
-      <ListsGroupsNav>
+      {/* <ListsGroupsNav>
         <ul>{renderGroups(groups)}</ul>
       </ListsGroupsNav>
 
@@ -54,7 +54,7 @@ export function Sidebar() {
         <button>
           <img src={NewGroupIcon} alt="New group" />
         </button>
-      </AddButtons>
+      </AddButtons> */}
     </Container>
   );
 }
