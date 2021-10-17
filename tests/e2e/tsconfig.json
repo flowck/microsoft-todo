@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "outDir": "./build",
+    "allowJs": true,
+    "types": ["cypress"]
+  },
+  "exclude": ["./plugins"],
+  "include": ["./node_modules/cypress", "./**/*.ts"]
+}
