@@ -2,24 +2,27 @@ import { RootState } from "@/store";
 import { Icons } from "@/common/icons";
 import { TaskItem } from "../TaskItem/TaskItem";
 import * as DateUtil from "@/common/utils/dates";
+import { AddIcon } from "@/common/icons/AddIcon";
 import { Step } from "@/modules/Tasks/store/step";
-import { ListSteps } from "../ListSteps/ListSteps";
 import { Task } from "@/modules/Tasks/store/task";
+import { ListSteps } from "../ListSteps/ListSteps";
 import { createAction } from "@/common/store/utils";
 import { useDispatch, useSelector } from "react-redux";
-import { FormEvent, useEffect, useRef, useState } from "react";
-import { REMOVE_TASK, UPDATE_TASK } from "@/modules/Tasks/store/actions";
+import { getMainColor } from "@/modules/Tasks/utils/colors";
 import {
   Container,
   AddStepForm,
   AddNoteInput,
-  DetailsIcon,
   DetailsItems,
   DetailsFooter,
   DetailsContent,
   StepsContainer,
 } from "@/modules/Tasks/components/DetailsBar/DetailsBarStyles";
-const { AddIcon, ArrowCloseIcon, TrashIcon } = Icons;
+import { TasksContext } from "@/modules/Tasks/containers/TasksContext";
+import { REMOVE_TASK, UPDATE_TASK } from "@/modules/Tasks/store/actions";
+import { FormEvent, useContext, useEffect, useRef, useState } from "react";
+
+const { ArrowCloseIcon, TrashIcon } = Icons;
 
 interface Props {
   onClose(): void;
@@ -31,6 +34,7 @@ export function DetailsBar({ onClose }: Props) {
   const task = useSelector<RootState, Task | null>(({ tasksModule }) => tasksModule.activeTask);
   const createdAt = DateUtil.format(task?.createdAt);
   const noteTextAreaElement = useRef(null);
+  const { tasksType } = useContext(TasksContext);
 
   useEffect(() => {
     if (noteTextAreaElement.current && task) {
@@ -86,8 +90,8 @@ export function DetailsBar({ onClose }: Props) {
               {task?.steps.length ? (
                 <ListSteps onRemoveStep={onStepsUpdate} onToggleStatus={onStepsUpdate} steps={task.steps} />
               ) : null}
-              <AddStepForm onSubmit={onSubmitStep}>
-                <DetailsIcon src={AddIcon} alt="Add step" />
+              <AddStepForm tasksType={tasksType} onSubmit={onSubmitStep}>
+                <AddIcon color={getMainColor(tasksType)}></AddIcon>
                 <input value={step} type="text" placeholder="Add step" onInput={onInputStep} />
               </AddStepForm>
             </StepsContainer>

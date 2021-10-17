@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { BaseProps } from "@/common/interfaces";
+import { BaseProps } from "@/common/typing";
 
 const Container = styled.div`
   position: relative;

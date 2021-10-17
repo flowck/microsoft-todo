@@ -1,21 +1,24 @@
 import { useDispatch } from "react-redux";
-import { FormEvent, useState } from "react";
 import { Container } from "./AddTaskStyles";
 import { Task } from "@/modules/Tasks/store/task";
+import { AddIcon } from "@/common/icons/AddIcon";
+import { getMainColor } from "../../utils/colors";
 import { createAction } from "@/common/store/utils";
-import AddTaskIcon from "@/common/icons/add-task.svg";
 import { NEW_TASK } from "@/modules/Tasks/store/actions";
+import { FormEvent, useContext, useState } from "react";
+import { TasksContext } from "@/modules/Tasks/containers/TasksContext";
 
 export function AddTask() {
   const dispatch = useDispatch();
   const [content, setContent] = useState("");
+  const { tasksType } = useContext(TasksContext);
 
   const onSubmit = (event: FormEvent) => {
     if (!content) {
       return undefined;
     }
 
-    const task = new Task(content);
+    const task = new Task(content, tasksType);
     dispatch(createAction<Task>(NEW_TASK, task));
 
     (event.target as HTMLFormElement).reset();
@@ -24,8 +27,8 @@ export function AddTask() {
   };
 
   return (
-    <Container data-testid="addTaskForm" onSubmit={onSubmit}>
-      <img src={AddTaskIcon} alt="Add a task" />
+    <Container tasksType={tasksType} data-testid="addTaskForm" onSubmit={onSubmit}>
+      <AddIcon color={getMainColor(tasksType)}></AddIcon>
       <input
         placeholder="Add a task"
         data-testid="addTaskInput"

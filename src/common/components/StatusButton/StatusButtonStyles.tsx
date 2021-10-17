@@ -1,10 +1,12 @@
 import styled from "styled-components";
+import { getMainColor } from "@/modules/Tasks/utils/colors";
+import { TaskTypeProp } from "@/common/typing";
 
-interface ContainerProps {
+interface ContainerProps extends TaskTypeProp {
   size: string;
 }
 
-export const Container = styled.button.attrs((props: ContainerProps) => props)`
+export const StatusButtonContainer = styled.button.attrs((props: ContainerProps) => props)`
   display: flex;
   cursor: pointer;
   border-radius: 50%;
@@ -16,8 +18,8 @@ export const Container = styled.button.attrs((props: ContainerProps) => props)`
   height: ${(props) => props.size};
 
   &.status-button--complete {
-    border-color: #778bdd;
-    background-color: #778bdd;
+    border-color: ${({ tasksType }) => getMainColor(tasksType)};
+    background-color: ${({ tasksType }) => getMainColor(tasksType)};
   }
 
   img {
